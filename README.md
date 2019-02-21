@@ -94,7 +94,7 @@ Contribution
 
 If something is unclear, confusing, or needs to be refactored, please let me know.
 Pull requests are always welcome
-####This project uses:
+#### This project uses:
 [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript) with a few minor exceptions. If you are submitting a pull request that involves Pug templates, please make sure you are using *spaces*, not tabs.
 
 License
