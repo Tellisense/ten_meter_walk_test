@@ -1,0 +1,240 @@
+/*  MEDIA QUERY MANAGER 
+min - max
+0   - 320px:    iPhone5 small phones
+320 - 600px:    normal - is where our normal styles apply
+600 - 900px:    atSmall - Tablet portrait
+900 - 1200px:   atMedium - Tablet landscape
+1200 - 1800px:   atLarge - Desktop
+1800 - 2500px :  atXLarge - Big desktop
+2500px + :  atXXLarge - Big desktop
+*/
+
+/* 1em = 16px  */
+/* 0 - 320px */
+/* 600 - 900px*/
+/* 900 - 1200px */
+/* 1200 - 1800px */
+/* 1800 - 2500 */
+/* 2500px + 3200 */
+/* 3200px + */
+
+:root {
+  --color-primary: #36D1DC;
+  --color-secondary: #5B86E5;
+  --color-accent: rgba(247, 102, 45, 0.658);
+  --color-grey-light-1: rgba(252, 248, 251, 0.945);
+  --color-grey-light-2: rgb(232, 240, 250);
+  --color-grey-dark: rgba(35, 35, 36, 0.685);
+
+
+
+
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  /*   mobile first, default font size is for mobile screens between 320 - 600px  */
+  /*   this defines what 1rem is */
+  font-size: 55%;
+}
+
+@media (max-width: 20em) {
+  html {
+    font-size: 45%;
+  }
+}
+
+@media (min-width: 37.5em) {
+  html {
+    font-size: 58%;
+  }
+}
+
+@media (min-width: 56.25em) {
+  html {
+    font-size: 60%;
+  }
+}
+
+@media (min-width: 75em) {
+  html {
+    font-size: 63%;
+  }
+}
+
+@media (min-width: 112.5em) {
+  html {
+    font-size: 65%;
+  }
+}
+
+@media (min-width: 156.25em) {
+  html {
+    font-size: 74%;
+  }
+}
+
+@media (min-width: 200em) {
+  html {
+    font-size: 130%;
+  }
+}
+
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 1.6em;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  line-height: 1.7;
+  color: var(--color-grey-dark);
+  background: var(--color-primary);
+  background: -webkit-linear-gradient(to right, var(--color-secondary), var(--color-primary));
+  background: linear-gradient(to right, var(--color-secondary), var(--color-primary));
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.wrapper {
+  margin: 0;
+  max-width: 100%;
+  min-height: 80rem;
+  text-align: center;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+@media only screen and (min-width: 75em) {
+  .wrapper {
+    background: var(--color-primary);
+    background: -webkit-linear-gradient(to right, var(--color-secondary), var(--color-primary));
+    background: linear-gradient(to right, var(--color-secondary), var(--color-primary));
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+    max-width: 103rem;
+    margin: 0rem auto 2rem auto;
+  }
+}
+
+.logo {
+  height: 7.3rem;
+  margin: 2rem 0 4rem 0;
+}
+
+.btn-refresh {
+  display: inline;
+}
+
+.patient-information {
+  margin: 2rem auto 0 auto;
+  max-width: 80rem;
+  height: 40rem;
+  background-color: var(--color-grey-light-2);
+  box-shadow: 0 4px 4px 2px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+/* ********* iPhone slider button style START *********** */
+#btn-label--fast {
+  margin-left: 7.4rem;
+}
+
+
+.Slider__Bg {
+  display: inline-block;
+  background-color: var(--color-primary);
+  width: 60px;
+  height: 30px;
+  border-radius: 20px;
+  margin: 0;
+  padding: -1.28px;
+  transition: 0.25s;
+}
+
+.Slider__Btn {
+  display: block;
+  background-color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.65);
+}
+
+.Slider__Bg-active {
+  background-color: rgba(247, 102, 45, 0.76);
+}
+
+.Slider__Btn-active {
+  margin: 0 0 0 30px;
+}
+
+#idSlideBtn {
+  transition: 0.25s;
+}
+
+/* ********** iPhone slider button style END *********** */
+
+
+
+
+
+/********** Stop-watch style START *********** */
+.stop-watch {
+  margin: 0 auto;
+  max-width: 80rem;
+  height: 30rem;
+  background-color: var(--color-grey-light-1);
+  box-shadow: 0 4px 4px 2px rgba(0, 0, 0, 0.2);
+}
+
+.stop-watch__timer {
+  padding-top: 8rem;
+  font-size: 4rem;
+}
+
+/********** Stop-watch style END *********** */
+
+
+.test__finalize {
+  margin: 0 auto;
+  display: block;
+  margin-top: 3rem;
+}
+
+
+
+.transcript {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 80rem;
+  height: 9.8rem;
+  background-color: var(--color-grey-light-2);
+  box-shadow: 0 4px 4px 2px rgba(0, 0, 0, 0.2);
+}
+
+@media only screen and (max-width: 37.5em) {
+  .transcript {}
+}
+
+.hidden2 {
+  display: none;
+}
+
+.hidden {
+  text-align: center;
+  display: none;
+}
