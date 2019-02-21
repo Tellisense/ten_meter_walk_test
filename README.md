@@ -10,6 +10,9 @@
   Measure and mark a 10-meter walkway
   Add a marker at 2-meter
   Add a marker at 8-meter
+  
+  ![](./10m.png)
+  
 #### Administer instructions:
   The individual walks without assistance for 10 meters, with the time measured for the intermediate 6 meters to allow for acceleration and deceleration. 
   Assistive devices may be used, but must be kept consistent and documented for each test. 
