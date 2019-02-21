@@ -25,7 +25,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/tellisense/ten_meter.git"
+    "url": "https://github.com/tellisense/ten_meter_walk_test.git"
   },
   "author": "Justin  tellisense@icoud.com  @Tellisense",
   "license": "MIT",
@@ -46,9 +46,9 @@
     "nodemon": "^1.9.2"
   },
   "bugs": {
-    "url": "https://github.com/Tellisense/ten_meter/issues"
+    "url": "https://github.com/Tellisense/ten_meter_walk_test/issues"
   },
-  "homepage": "https://github.com/Tellisense/ten_meter#readme",
+  "homepage": "https://github.com/Tellisense/ten_meter_walk_test#readme",
   "keywords": [
     "10",
     "meter",
