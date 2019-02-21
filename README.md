@@ -5,12 +5,12 @@
 
 **Live Demo**: https://justinhacks.com
 
-##A tool for measuring the progress of patients with partial mobility impairment.
-####Setting Up:
+## A tool for measuring the progress of patients with partial mobility impairment.
+#### Setting Up:
   Measure and mark a 10-meter walkway
   Add a marker at 2-meter
   Add a marker at 8-meter
-####Administer instructions:
+#### Administer instructions:
   The individual walks without assistance for 10 meters, with the time measured for the intermediate 6 meters to allow for acceleration and deceleration. 
   Assistive devices may be used, but must be kept consistent and documented for each test. 
   Start timing when the toes pass the 2 meter mark.
@@ -20,11 +20,11 @@
   After performing three trials, the app will calculate the average of three trials and auto generate a patient result snippet that you can cut and paste into their **EMR**.
 
 
-###Patient Instructions:
-#####Normal comfortable speed trial:
+### Patient Instructions:
+##### Normal comfortable speed trial:
  “I will say ready, set, go. When I say go, walk at your comfortable speed until I say  stop”
       (perform 3x and generate result)
-#####Maximum speed trials:
+##### Maximum speed trials:
  “I will say ready, set, go. When I say go, walk as fast as you safely can until I say stop”
      (perform 3x and generate result)
 
