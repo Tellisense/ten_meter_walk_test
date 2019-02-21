@@ -7,12 +7,12 @@
 
 ## A tool for measuring the progress of patients with partial mobility impairment.
 #### Setting Up:
+![](./md_images/10m.png)
+  
   Measure and mark a 10-meter walkway
   Add a marker at 2-meter
   Add a marker at 8-meter
-  
-  ![](./10m.png)
-  
+
 #### Administer instructions:
   The individual walks without assistance for 10 meters, with the time measured for the intermediate 6 meters to allow for acceleration and deceleration. 
   Assistive devices may be used, but must be kept consistent and documented for each test. 
@@ -24,6 +24,7 @@
 
 
 ### Patient Instructions:
+![](./md_images/prosthetic.png)
 ##### Normal comfortable speed trial:
  “I will say ready, set, go. When I say go, walk at your comfortable speed until I say  stop”
       (perform 3x and generate result)
@@ -58,7 +59,7 @@ Start live-reload server
 
 <h4 align="center">App Preview</h4>
 
-![](./app.png)
+![](./md_images/app.png)
 
 
 Disclaimer
