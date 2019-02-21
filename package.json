@@ -27,7 +27,7 @@
     "type": "git",
     "url": "git+ssh://git@github.com/tellisense/ten_meter.git"
   },
-  "author": "Justin Rahimi  tellisense@icoud.com  @Tellisense",
+  "author": "Justin  tellisense@icoud.com  @Tellisense",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.13.3",
