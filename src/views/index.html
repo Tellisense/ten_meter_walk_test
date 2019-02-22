@@ -16,7 +16,6 @@
 <body>
   <div class="wrapper">
     <header class="header">
-
       <button class="btn btn--refresh" value="Refresh Page" onClick="window.location.reload()">New Test</button>
       <img src="assets/images/logo.png" alt="10MW logo" class="logo">
     </header>
@@ -27,7 +26,6 @@
         Last name: <input type="text" id="last-name" name="lname"><br><br>
         <label for="DOB">Date Of Birth:</label>
         <input type="date" id="DOB" name="date-of-birth" value="1980-09-01" min="1950-01-01" max="2019-02-20"><br><br>
-
         <div class="btn-slider">
           <label id="btn-label--normal" for="normal">Normal</label>
           <div id="idSlideBg" class="Slider__Bg" onclick="sliderBgOnClick()">
@@ -41,39 +39,27 @@
 
     <section class="main">
       <div class="stop-watch">
-        <button class="btn btn--reset stop-watch__reset">Reset</button>
+        <button class="btn btn--reset stop-watch__reset">reset</button>
         <div class="stop-watch__timer">00 . 000</div>
       </div>
-
       <div class="stop-watch__btn">
-        <button class="btn btn--start stop-watch__toggle">Start</button>
+        <button class="btn btn--start stop-watch__toggle">start</button>
         <button type="submit" class="btn btn--use stop-watch__use">+ add</button>
       </div>
-
       <div class="stop-watch-tests">
       </div>
       <div class="submit-copy">
-        <button id="btn--clipboard" class="btn hidden2 copy">Copy</button>
-        <button type="submit" class="btn btn--submit">Submit</button>
+        <button id="btn--clipboard" class="btn hidden2 copy">copy</button>
+        <button type="submit" class="btn btn--submit">submit</button>
       </div>
-
     </section>
-
 
     <section class="transcript">
       <textarea name="patient-transcript" class="hidden patient-transcript" cols="45" rows="4"></textarea>
-      <!-- <input id="input" type="text" /> -->
     </section>
 
   </div>
 </body>
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-  crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-  crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-  crossorigin="anonymous"></script>
 <script src=" js/main.js"> </script>
 </body>
 

@@ -79,9 +79,7 @@ function checkSpeed() {
 var total = 0;
 var calculatedSpeed = function () {
   var averageSpeed = total / 3;
-  console.log(averageSpeed);
   var geitSpeed = 6 / averageSpeed;
-  console.log(geitSpeed);
   return (geitSpeed * 1000).toFixed(2);
 }
 
@@ -89,13 +87,13 @@ finalizeBtn.addEventListener('click', function (event) {
   hidden.style.display = 'block';
   hidden2.style.display = 'block';
 
-  transcript.innerHTML = `During ${checkSpeed()} patient, ${firstName.value} ${lastName.value}, age: ${calculateAge(birthday)}, performed at a Gait Speed of: ${calculatedSpeed()}.`;
+  transcript.innerHTML = `During ${checkSpeed()},  patient ${firstName.value} ${lastName.value}, age: ${calculateAge(birthday)}, performed at a Gait Speed of :  ${calculatedSpeed()} meters per second (m/s).`;
   event.preventDefault();
 
   sendData({
     firstName: firstName.value,
     lastName: lastName.value,
-    dob: birthday,
+    dob: DOB.value,
     age: calculateAge(birthday),
     speed: checkSpeed(),
     rate: calculatedSpeed()
@@ -126,19 +124,14 @@ function Stopwatch(elem) {
 
   function timeFormatter(time) {
     this.time = new Date(time);
-    // var minutes = this.time.getMinutes().toString();
     var seconds = this.time.getSeconds().toString();
     var milliseconds = this.time.getMilliseconds().toString();
-    // if (minutes.length < 2) {
-    //   minutes = '0' + minutes;
-    // }
     if (seconds.length < 3) {
       seconds = '0' + seconds;
     }
     while (milliseconds.length < 3) {
       milliseconds = '0' + milliseconds;
     }
-    // return minutes + ' : ' + seconds + ' . ' + milliseconds;
     return seconds + ' . ' + milliseconds;
   }
   this.start = function () {
@@ -149,7 +142,6 @@ function Stopwatch(elem) {
 
   this.add = function () {
     if (this.counter > 2) {
-      // stopWatchTestsSection[0].insertAdjacentHTML('beforeend', `<div>ONLY 3 tests are allowed</div>`);
       return;
     } else if (this.counter === 2) {
       this.stop();
