@@ -10,7 +10,9 @@
 ![](./md_images/10m.png)
   
   Measure and mark a 10-meter walkway
+
   Add a marker at 2-meter
+  
   Add a marker at 8-meter
 
 #### Administer instructions:
@@ -38,9 +40,9 @@ Getting Started
 The easiest way to get started is to clone the repository:
 
 
-        $ git clone https://github.com/tellisense/ten_meter.git
+        $ git clone https://github.com/tellisense/ten_meter_walk_test.git
       
-        $ cd ten_meter
+        $ cd ten_meter_walk_test
 
         $ npm install
 

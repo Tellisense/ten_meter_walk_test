@@ -3,7 +3,7 @@
 var timer = document.querySelector('.stop-watch__timer');
 var toggleBtn = document.querySelector('.stop-watch__toggle');
 var resetBtn = document.querySelector('.stop-watch__reset');
-var useBtn = document.querySelector('.stop-watch__use');
+var addBtn = document.querySelector('.stop-watch__use');
 var displayTime = document.querySelector('.stop-watch__timer');
 var finalizeBtn = document.querySelector('.btn--submit');
 var transcript = document.querySelector('.patient-transcript');
@@ -14,20 +14,35 @@ var lastName = document.querySelector('#last-name');
 var DOB = document.querySelector('#DOB');
 var copyText = document.querySelector('.patient-transcript');
 var stopWatchTestsSection = document.getElementsByClassName('stop-watch-tests');
+var slideBtn = document.querySelector('#idSlideBg');
+var startBtn = document.querySelector('.btn--start');
 
-
-
+var isSliderEnabled = true;
 
 //********* Stop-watch timer functionality START ***********
 var watch = new Stopwatch(timer);
 
 function start() {
+  var fieldsToChange = [
+    firstName,
+    lastName,
+    DOB,
+    addBtn,
+    finalizeBtn
+  ];
+  // disable fields while start is depressed
+  fieldsToChange.forEach(function (item) {
+    item.setAttribute('disabled', true);
+  })
   toggleBtn.textContent = 'Stop';
+  isSliderEnabled = false;
+
   watch.start();
 }
 
 function stop() {
   toggleBtn.textContent = 'Start';
+  addBtn.removeAttribute('disabled');
   watch.stop();
 }
 
@@ -47,10 +62,9 @@ resetBtn.addEventListener('click', function () {
   watch.reset();
 });
 
-useBtn.addEventListener('click', function () {
-  watch.use();
+addBtn.addEventListener('click', function () {
+  watch.add();
 });
-
 
 //  check speed of test being performed
 function checkSpeed() {
@@ -61,31 +75,44 @@ function checkSpeed() {
     return ' normal comfortable speed trial';
   }
 }
-var calculatedSpeed = "30"
 
+var total = 0;
+var calculatedSpeed = function () {
+  var speed = total / 6;
+  return speed.toFixed(2);
+
+}
 
 finalizeBtn.addEventListener('click', function (event) {
   hidden.style.display = 'block';
   hidden2.style.display = 'block';
 
-  transcript.innerHTML = `During ${checkSpeed()} Patient ${firstName.value} ${lastName.value}, age: ${calculateAge(birthday)} performed at a rate of ${calculatedSpeed}`;
+  transcript.innerHTML = `During ${checkSpeed()} Patient ${firstName.value} ${lastName.value}, age: ${calculateAge(birthday)} performed at a rate of ${calculatedSpeed()}`;
   event.preventDefault();
 
-  sendData();
+  sendData({
+    firstName: firstName.value,
+    lastName: lastName.value,
+    dob: birthday,
+    age: calculateAge(birthday),
+    speed: checkSpeed(),
+    rate: calculatedSpeed()
+  });
 });
 
 function Stopwatch(elem) {
-  var time = 0;
+  this.time = 0;
   var offset;
   var interval;
   this.counter = 0;
+  this.total = 0;
 
   function update() {
     if (this.isOn) {
-      time += delta();
+      this.time += delta();
     }
 
-    elem.textContent = timeFormatter(time);
+    elem.textContent = timeFormatter(this.time);
   }
 
   function delta() {
@@ -96,10 +123,10 @@ function Stopwatch(elem) {
   }
 
   function timeFormatter(time) {
-    time = new Date(time);
-    var minutes = time.getMinutes().toString();
-    var seconds = time.getSeconds().toString();
-    var milliseconds = time.getMilliseconds().toString();
+    this.time = new Date(time);
+    var minutes = this.time.getMinutes().toString();
+    var seconds = this.time.getSeconds().toString();
+    var milliseconds = this.time.getMilliseconds().toString();
     if (minutes.length < 2) {
       minutes = '0' + minutes;
     }
@@ -117,19 +144,22 @@ function Stopwatch(elem) {
     this.isOn = true;
   };
 
-  this.use = function () {
+  this.add = function () {
     if (this.counter > 2) {
-      stopWatchTestsSection[0].insertAdjacentHTML('beforeend', `<div>ONLY 3 tests are allowed</div>`);
-      // *******need to disable all buttons *******
-
-
+      // stopWatchTestsSection[0].insertAdjacentHTML('beforeend', `<div>ONLY 3 tests are allowed</div>`);
       return;
     } else if (this.counter === 2) {
       this.stop();
+      addBtn.setAttribute('disabled', true);
+      startBtn.setAttribute('disabled', true);
+      resetBtn.setAttribute('disabled', true);
+      finalizeBtn.removeAttribute('disabled');
     }
     this.counter++;
     // Appending the DOM element
-    stopWatchTestsSection[0].insertAdjacentHTML('beforeend', `<div>Test # ${this.counter}&nbsp; &nbsp;  <span class="tests-result">${timeFormatter(time)}</span></div>`);
+    stopWatchTestsSection[0].insertAdjacentHTML('beforeend', `<div>Test # ${this.counter}&nbsp; &nbsp;  <span class="tests-result">${timeFormatter(this.time)}</span></div>`);
+    total += this.time;
+    this.time = 0;
   };
 
   this.stop = function () {
@@ -139,7 +169,7 @@ function Stopwatch(elem) {
   };
 
   this.reset = function () {
-    time = 0;
+    this.time = 0;
     // Resting the counter to 0 on reset
     this.counter = 0;
     // removing the test results from DOM
@@ -150,9 +180,9 @@ function Stopwatch(elem) {
 }
 //********* Stop-watch timer functionality END ***********
 
-function formSubmit() {
-  document.forms["myForm"].submit();
-}
+
+
+
 
 
 //********* Copy to Clipboard START ***********
@@ -167,17 +197,18 @@ document.querySelector(".copy").addEventListener("click", copy);
 
 
 
-function sendData() {
+
+
+//********* API -- (XHR) objects to interact with servers START ***********
+function sendData(data) {
   var XHR = new XMLHttpRequest();
+  var jsonData;
 
-  // Bind the FormData object and the form element
-  var form = document.querySelector('form');
-  var FD = new FormData(form);
-
-  // Define what happens on successful data submission
-  XHR.addEventListener("load", function (event) {
-    console.log(event.target.responseText);
-  });
+  try {
+    jsonData = JSON.stringify(data)
+  } catch (err) {
+    throw new Error(err);
+  }
 
   // Define what happens in case of error
   XHR.addEventListener("error", function (event) {
@@ -185,11 +216,17 @@ function sendData() {
   });
 
   // Set up our request
-  XHR.open("POST", "/");
+  XHR.open("POST", "/submit");
+  //Send the proper header information along with the request
+  XHR.setRequestHeader('Content-Type', 'application/json');
 
-  // The data sent is what the user provided in the form
-  XHR.send(FD);
+  // The data sent is what the user provided
+  XHR.send(jsonData);
 }
+//********* API -- (XHR) objects to interact with servers END ***********
+
+
+
 
 
 
@@ -215,6 +252,9 @@ function sliderOnClick() {
 }
 
 function sliderBgOnClick() {
+  if (!isSliderEnabled) {
+    return;
+  }
   classToggle(slideBg, 'Slider__Bg-active');
   classToggle(slideBtn, 'Slider__Btn-active');
 }
