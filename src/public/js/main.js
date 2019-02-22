@@ -5,7 +5,7 @@ var toggleBtn = document.querySelector('.stop-watch__toggle');
 var resetBtn = document.querySelector('.stop-watch__reset');
 var useBtn = document.querySelector('.stop-watch__use');
 var displayTime = document.querySelector('.stop-watch__timer');
-var finalizeBtn = document.querySelector('.test__finalize');
+var finalizeBtn = document.querySelector('.btn--submit');
 var transcript = document.querySelector('.patient-transcript');
 var hidden = document.querySelector('.hidden');
 var hidden2 = document.querySelector('.hidden2');
@@ -52,18 +52,23 @@ useBtn.addEventListener('click', function () {
 });
 
 
-// calculated Speed
-var speedType = ' normal comfortable speed trial';
-var calculatedSpeed = '76.36';
+//  check speed of test being performed
+function checkSpeed() {
+  //  if true - slider switch is on fast
+  if (slideBtn.classList.contains('Slider__Btn-active')) {
+    return ` fast paced speed trial`;
+  } else {
+    return ' normal comfortable speed trial';
+  }
+}
+var calculatedSpeed = "30"
 
-// normal comfortable speed trial
-// maximum speed trial
 
 finalizeBtn.addEventListener('click', function (event) {
   hidden.style.display = 'block';
   hidden2.style.display = 'block';
 
-  transcript.innerHTML = `During ${speedType} Patient ${firstName} ${lastName}, age: ${calculateAge(birthday)} performed at a ${calculatedSpeed} speed`;
+  transcript.innerHTML = `During ${checkSpeed()} Patient ${firstName.value} ${lastName.value}, age: ${calculateAge(birthday)} performed at a rate of ${calculatedSpeed}`;
   event.preventDefault();
 
   sendData();
@@ -115,13 +120,16 @@ function Stopwatch(elem) {
   this.use = function () {
     if (this.counter > 2) {
       stopWatchTestsSection[0].insertAdjacentHTML('beforeend', `<div>ONLY 3 tests are allowed</div>`);
+      // *******need to disable all buttons *******
+
+
       return;
     } else if (this.counter === 2) {
       this.stop();
     }
     this.counter++;
     // Appending the DOM element
-    stopWatchTestsSection[0].insertAdjacentHTML('beforeend', `<div>Test #${this.counter}: <span class="tests--first">${timeFormatter(time)}</span></div>`);
+    stopWatchTestsSection[0].insertAdjacentHTML('beforeend', `<div>Test # ${this.counter}&nbsp; &nbsp;  <span class="tests-result">${timeFormatter(time)}</span></div>`);
   };
 
   this.stop = function () {
@@ -142,7 +150,9 @@ function Stopwatch(elem) {
 }
 //********* Stop-watch timer functionality END ***********
 
-
+function formSubmit() {
+  document.forms["myForm"].submit();
+}
 
 
 //********* Copy to Clipboard START ***********
