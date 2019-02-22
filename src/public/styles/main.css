@@ -89,7 +89,7 @@ html {
 
 body {
   font-family: 'Roboto', sans-serif;
-  font-weight: 100;
+  font-weight: 400;
   font-size: 1.6em;
   text-transform: uppercase;
   box-sizing: border-box;
@@ -282,26 +282,26 @@ h1 {
 .main {
   margin: 0 auto;
   max-width: 80rem;
-  height: 30rem;
+  height: 33rem;
   background-color: var(--color-grey-light-1);
   box-shadow: 0 4px 4px 2px rgba(0, 0, 0, 0.2);
 }
 
 .stop-watch {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 2fr 5fr;
   place-items: center center;
 }
 
 .stop-watch__timer {
-  margin-left: -7rem;
+  margin-left: -9rem;
   margin-top: 1rem;
   font-size: 4rem;
 }
 
 .stop-watch__reset {
   margin-top: 3.5rem;
-  margin-left: -2rem;
+  margin-left: 3px;
 }
 
 .stop-watch__btn {
@@ -353,7 +353,12 @@ h1 {
 }
 
 .submit-copy {
+  margin-top: 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   place-items: center center;
+}
+
+.patient-transcript {
+  margin: 0 auto;
 }
