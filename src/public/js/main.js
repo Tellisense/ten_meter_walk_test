@@ -13,11 +13,48 @@ var firstName = document.querySelector('#first-name');
 var lastName = document.querySelector('#last-name');
 var DOB = document.querySelector('#DOB');
 var copyText = document.querySelector('.patient-transcript');
+var copyBtn = document.querySelector("#btn--clipboard");
+var copyText = document.querySelector(".patient-transcript");
 var stopWatchTestsSection = document.getElementsByClassName('stop-watch-tests');
-var slideBtn = document.querySelector('#idSlideBg');
+var slideBtn = document.querySelector('.btn-slider__background');
 var startBtn = document.querySelector('.btn--start');
-
+var slideBg = document.querySelector('#btn-slider_bg');
+var SliderBtnId = document.getElementById('Slider__Btn-id');
 var isSliderEnabled = true;
+
+
+
+
+//********** iPhone style sliding button START ***********
+function classToggle(elem, className) {
+  var arrClass = elem.className.split(' ');
+  for (item in arrClass) {
+    if (arrClass[item] === className) {
+      arrClass.splice(item);
+      elem.className = arrClass.join(' ');
+      return;
+    }
+  }
+  arrClass.push(className);
+  elem.className = arrClass.join(' ');
+}
+
+function sliderOnClick() {
+  SliderBtnId.classList.toggle('Slider__Btn-active');
+  slideBg.style.background = SliderBtnId.classList.contains('Slider__Btn-active') ? '#36D1DC' : 'rgba(247, 102, 45, 0.76)';
+}
+
+function sliderBgOnClick() {
+  if (!isSliderEnabled) {
+    return;
+  }
+  classToggle(slideBg, 'btn-slider__background-active');
+  classToggle(SliderBtnId, 'Slider__Btn-active');
+}
+//********* iPhone style sliding button END ***********
+
+
+
 
 //********* Stop-watch timer functionality START ***********
 var watch = new Stopwatch(timer);
@@ -176,20 +213,13 @@ function Stopwatch(elem) {
 //********* Stop-watch timer functionality END ***********
 
 
-
-
-
-
 //********* Copy to Clipboard START ***********
 function copy() {
-  var copyText = document.querySelector(".patient-transcript");
   copyText.select();
   document.execCommand("copy");
 }
-document.querySelector(".copy").addEventListener("click", copy);
+copyBtn.addEventListener("click", copy);
 //********* Copy to Clipboard END ***********
-
-
 
 
 
@@ -219,38 +249,3 @@ function sendData(data) {
   XHR.send(jsonData);
 }
 //********* API -- (XHR) objects to interact with servers END ***********
-
-
-
-
-
-
-//********** iPhone style sliding button START ***********
-function classToggle(elem, className) {
-  var arrClass = elem.className.split(' ');
-  for (item in arrClass) {
-    if (arrClass[item] === className) {
-      arrClass.splice(item);
-      elem.className = arrClass.join(' ');
-      return;
-    }
-  }
-  arrClass.push(className);
-  elem.className = arrClass.join(' ');
-}
-var slideBg = document.getElementById('idSlideBg');
-var slideBtn = document.getElementById('idSlideBtn');
-
-function sliderOnClick() {
-  slideBtn.classList.toggle('Slider__Btn-active');
-  slideBg.style.background = slideBtn.classList.contains('Slider__Btn-active') ? '#36D1DC' : 'rgba(247, 102, 45, 0.76)';
-}
-
-function sliderBgOnClick() {
-  if (!isSliderEnabled) {
-    return;
-  }
-  classToggle(slideBg, 'Slider__Bg-active');
-  classToggle(slideBtn, 'Slider__Btn-active');
-}
-//********* iPhone style sliding button END ***********

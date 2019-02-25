@@ -14,7 +14,7 @@
 </head>
 
 <body>
-  <div class="wrapper">
+  <div class="container">
     <header class="header">
       <button class="btn btn--refresh" value="Refresh Page" onClick="window.location.reload()">New Test</button>
       <img src="assets/images/logo.png" alt="10MW logo" class="logo">
@@ -22,20 +22,19 @@
     <section class="patient-information">
       <H1>10 METER WALK TEST</H1>
       <form name="myForm" action="/action_page" method="get">
-        First name: <input type="text" id="first-name" name="fname"><br><br>
-        Last name: <input type="text" id="last-name" name="lname"><br><br>
+        First name: <input placeholder="John" type="text" id="first-name" name="first-name"><br><br>
+        Last name: <input placeholder="Doe" type="text" id="last-name" name="last-name"><br><br>
         <label for="DOB">Date Of Birth:</label>
-        <input type="date" id="DOB" name="date-of-birth" value="1980-09-01" min="1950-01-01" max="2019-02-20"><br><br>
+        <input type="date" id="DOB" name="date-of-birth" value="1980-01-01" min="1930-01-01" max="2012-01-01"><br><br>
         <div class="btn-slider">
-          <label id="btn-label--normal" for="normal">Normal</label>
-          <div id="idSlideBg" class="Slider__Bg" onclick="sliderBgOnClick()">
-            <div id="idSlideBtn" class="Slider__Btn" />
+          <label id="btn-slider__label--normal" for="normal">Normal</label>
+          <div id="btn-slider_bg" class="btn-slider__background" onclick="sliderBgOnClick()">
+            <div id="Slider__Btn-id" class="Slider__Btn" />
           </div>
-          <label id="btn-label--fast" for="fast">Fast</label>
+          <label id="btn-slider__label--fast" for="fast">Fast</label>
         </div>
       </form>
     </section>
-
 
     <section class="main">
       <div class="stop-watch">

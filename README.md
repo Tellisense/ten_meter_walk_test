@@ -22,7 +22,7 @@
   Stop timing when the toes pass the 8 meter mark.
   Can be tested at either preferred walking speed **(NORMAL)** or maximum walking speed **(FAST)**.
   (ensure to select the right choice in the app, which was tested)                  
-  After performing three trials, the app will calculate the average of three trials and auto generate a patient result snippet that you can cut and paste into their **EMR**.
+  After performing three trials, the app will calculate the average of three trials and auto generate a patient result snippet that you can cut and paste into their **EMR**, Electronic Medical Record.
 
 
 ### Patient Instructions:
@@ -44,7 +44,6 @@ The easiest way to get started is to clone the repository:
       
         $ cd ten_meter_walk_test
 
-        $ npm install
 
 Make it your own
 
@@ -57,6 +56,10 @@ Install dependencies
 Start live-reload server
 
         $ npm start
+
+Go to localhost url:
+
+        http://localhost:8080
 
 
 <h4 align="center">App Preview</h4>
@@ -77,14 +80,15 @@ Features
 - Averaging test results **3 times** 
 - calculating **age** based on birthday
 - Auto generating patient transcript for cut and paste in **EMR**
+- **API** for sending JSON data to Node.JS backend 
 
 
 Prerequisites
 -------------
 
-- [Node.js 8.0+](http://nodejs.org)
+- [Node.js 8.0+ NPM](https://www.npmjs.com/get-npm)
 - Command Line Tools
- - <img src="http://deluge-torrent.org/images/apple-logo.gif" height="17">&nbsp;**Mac OS X:** [Xcode](https://itunes.apple.com/us/app/xcode/id497799835?mt=12) (or **OS X 10.9+**: `xcode-select --install`)
+ - <img src="http://deluge-torrent.org/images/apple-logo.gif" height="17">&nbsp;**Mac OS X:** [VScode Mac](https://code.visualstudio.com/docs/?dv=osx)
  - <img src="http://dc942d419843af05523b-ff74ae13537a01be6cfec5927837dcfe.r14.cf1.rackcdn.com/wp-content/uploads/windows-8-50x50.jpg" height="17">&nbsp;**Windows:** [Visual Studio](https://www.visualstudio.com/products/visual-studio-community-vs) OR [Visaul Studio Code](https://code.visualstudio.com) + [Windows Subsystem for Linux - Ubuntu](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
  - <img src="https://lh5.googleusercontent.com/-2YS1ceHWyys/AAAAAAAAAAI/AAAAAAAAAAc/0LCb_tsTvmU/s46-c-k/photo.jpg" height="17">&nbsp;**Ubuntu** / <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Logo_Linux_Mint.png" height="17">&nbsp;**Linux Mint:** `sudo apt-get install build-essential`
 

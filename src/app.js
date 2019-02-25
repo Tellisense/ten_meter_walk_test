@@ -31,4 +31,4 @@ app.post('/submit', (req, res) => {
 })
 
 // Listening on port 8080
-app.listen(port, () => console.log(`10 Meter Walk App is live at https://localhost:${port}!`))
+app.listen(port, () => console.log(`10 Meter Walk App is live at http://localhost:${port}!`))
