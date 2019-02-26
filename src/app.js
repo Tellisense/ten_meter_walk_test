@@ -4,8 +4,7 @@ const express = require('express');
 const app = express();
 const port = 8080;
 
-// Storing data
-// essentially this could be a database in a seperate file
+// Storing data : essentially this could be a database in a seperate file
 const DATABASE = [];
 
 app.use(express.static(__dirname + '/public'))

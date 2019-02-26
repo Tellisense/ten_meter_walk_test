@@ -216,7 +216,7 @@ h1 {
 .patient-information {
   margin: 2rem auto 0 auto;
   max-width: 80rem;
-  height: 30rem;
+  height: 32rem;
   background-color: var(--color-grey-light-2);
   box-shadow: 0 4px 4px 2px rgba(0, 0, 0, 0.2);
 }

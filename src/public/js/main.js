@@ -1,33 +1,28 @@
-// "use strict";
 // ********************DOM SELECTORS****************************
-var timer = document.querySelector('.stop-watch__timer');
-var toggleBtn = document.querySelector('.stop-watch__toggle');
-var resetBtn = document.querySelector('.stop-watch__reset');
-var addBtn = document.querySelector('.stop-watch__use');
-var displayTime = document.querySelector('.stop-watch__timer');
-var finalizeBtn = document.querySelector('.btn--submit');
-var transcript = document.querySelector('.patient-transcript');
-var hidden = document.querySelector('.hidden');
-var hidden2 = document.querySelector('.hidden2');
-var firstName = document.querySelector('#first-name');
-var lastName = document.querySelector('#last-name');
-var DOB = document.querySelector('#DOB');
-var copyText = document.querySelector('.patient-transcript');
-var copyBtn = document.querySelector("#btn--clipboard");
-var copyText = document.querySelector(".patient-transcript");
-var stopWatchTestsSection = document.getElementsByClassName('stop-watch-tests');
-var slideBtn = document.querySelector('.btn-slider__background');
-var startBtn = document.querySelector('.btn--start');
-var slideBg = document.querySelector('#btn-slider_bg');
-var SliderBtnId = document.getElementById('Slider__Btn-id');
-var isSliderEnabled = true;
-
-
-
+const timer = document.querySelector('.stop-watch__timer');
+const toggleBtn = document.querySelector('.stop-watch__toggle');
+const resetBtn = document.querySelector('.stop-watch__reset');
+const addBtn = document.querySelector('.stop-watch__use');
+const displayTime = document.querySelector('.stop-watch__timer');
+const finalizeBtn = document.querySelector('.btn--submit');
+const transcript = document.querySelector('.patient-transcript');
+const hidden = document.querySelector('.hidden');
+const hidden2 = document.querySelector('.hidden2');
+const firstName = document.querySelector('#first-name');
+const lastName = document.querySelector('#last-name');
+const DOB = document.querySelector('#DOB');
+const copyText = document.querySelector('.patient-transcript');
+const copyBtn = document.querySelector("#btn--clipboard");
+const stopWatchAppend = document.querySelectorAll('.stop-watch-tests');
+const slideBtn = document.querySelector('.btn-slider__background');
+const startBtn = document.querySelector('.btn--start');
+const slideBg = document.querySelector('#btn-slider_bg');
+const SliderBtnId = document.getElementById('Slider__Btn-id');
+let isSliderEnabled = true;
 
 //********** iPhone style sliding button START ***********
 function classToggle(elem, className) {
-  var arrClass = elem.className.split(' ');
+  let arrClass = elem.className.split(' ');
   for (item in arrClass) {
     if (arrClass[item] === className) {
       arrClass.splice(item);
@@ -57,10 +52,10 @@ function sliderBgOnClick() {
 
 
 //********* Stop-watch timer functionality START ***********
-var watch = new Stopwatch(timer);
+let watch = new Stopwatch(timer);
 
 function start() {
-  var fieldsToChange = [
+  let fieldsToChange = [
     firstName,
     lastName,
     DOB,
@@ -83,11 +78,11 @@ function stop() {
   watch.stop();
 }
 
-var birthday = new Date(DOB.value);
+let birthday = new Date(DOB.value);
 
 function calculateAge(birthday) {
-  var ageDifMs = Date.now() - birthday.getTime();
-  var ageDate = new Date(ageDifMs);
+  let ageDifMs = Date.now() - birthday.getTime();
+  let ageDate = new Date(ageDifMs);
   return Math.abs(ageDate.getUTCFullYear() - 1970);
 }
 
@@ -113,19 +108,19 @@ function checkSpeed() {
   }
 }
 
-var total = 0;
-var calculatedSpeed = function () {
-  var averageSpeed = total / 3;
-  var geitSpeed = 6 / averageSpeed;
-  return (geitSpeed * 1000).toFixed(2);
+let total = 0;
+let calculatedSpeed = function () {
+  let averageSpeed = total / 3;
+  let gaitSpeed = 6 / averageSpeed;
+  return (gaitSpeed * 1000).toFixed(2);
 }
 
-finalizeBtn.addEventListener('click', function (event) {
+finalizeBtn.addEventListener('click', loadTranscript);
+
+function loadTranscript(event) {
   hidden.style.display = 'block';
   hidden2.style.display = 'block';
-
   transcript.innerHTML = `During ${checkSpeed()},  patient ${firstName.value} ${lastName.value}, age: ${calculateAge(birthday)}, performed at a Gait Speed of :  ${calculatedSpeed()} meters per second (m/s).`;
-  event.preventDefault();
 
   sendData({
     firstName: firstName.value,
@@ -135,12 +130,15 @@ finalizeBtn.addEventListener('click', function (event) {
     speed: checkSpeed(),
     rate: calculatedSpeed()
   });
-});
+
+  event.preventDefault();
+}
+
 
 function Stopwatch(elem) {
   this.time = 0;
-  var offset;
-  var interval;
+  let offset;
+  let interval;
   this.counter = 0;
   this.total = 0;
 
@@ -153,16 +151,16 @@ function Stopwatch(elem) {
   }
 
   function delta() {
-    var now = Date.now();
-    var timePassed = now - offset;
+    let now = Date.now();
+    let timePassed = now - offset;
     offset = now;
     return timePassed;
   }
 
   function timeFormatter(time) {
     this.time = new Date(time);
-    var seconds = this.time.getSeconds().toString();
-    var milliseconds = this.time.getMilliseconds().toString();
+    let seconds = this.time.getSeconds().toString();
+    let milliseconds = this.time.getMilliseconds().toString();
     if (seconds.length < 3) {
       seconds = '0' + seconds;
     }
@@ -171,6 +169,7 @@ function Stopwatch(elem) {
     }
     return seconds + ' . ' + milliseconds;
   }
+
   this.start = function () {
     interval = setInterval(update.bind(this), 10);
     offset = Date.now();
@@ -189,7 +188,7 @@ function Stopwatch(elem) {
     }
     this.counter++;
     // Appending the DOM element
-    stopWatchTestsSection[0].insertAdjacentHTML('beforeend', `<div>Test # ${this.counter}&nbsp; &nbsp;  <span class="tests-result">${timeFormatter(this.time)}</span></div>`);
+    stopWatchAppend[0].insertAdjacentHTML('beforeend', `<div>Test # ${this.counter}&nbsp; &nbsp;  <span class="tests-result">${timeFormatter(this.time)}</span></div>`);
     total += this.time;
     this.time = 0;
   };
@@ -205,7 +204,7 @@ function Stopwatch(elem) {
     // Resting the counter to 0 on reset
     this.counter = 0;
     // removing the test results from DOM
-    stopWatchTestsSection[0].innerHTML = '';
+    stopWatchAppend[0].innerHTML = '';
     update();
   };
   this.isOn = false;
@@ -223,11 +222,10 @@ copyBtn.addEventListener("click", copy);
 
 
 
-
 //********* API -- (XHR) objects to interact with servers START ***********
 function sendData(data) {
-  var XHR = new XMLHttpRequest();
-  var jsonData;
+  let XHR = new XMLHttpRequest();
+  let jsonData;
 
   try {
     jsonData = JSON.stringify(data)
@@ -248,4 +246,5 @@ function sendData(data) {
   // The data sent is what the user provided
   XHR.send(jsonData);
 }
+
 //********* API -- (XHR) objects to interact with servers END ***********

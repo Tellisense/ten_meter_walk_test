@@ -2,8 +2,7 @@
 
 10 Meter Walk Test
 ===========================================================================
-
-**Live Demo**: https://justinhacks.com
+**Learn More**: https://bit.ly/2tDOhfL
 
 ## A tool for measuring the progress of patients with partial mobility impairment.
 #### Setting Up:
